@@ -17,27 +17,37 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '( 
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
+     clojure
      emacs-lisp
+     ;;finance
+     ;;gnus
+     html
+     ibuffer
      javascript
-     react
      git
+     ;;github
      ;; markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     react
+     ;;restclient
+     ;;prodigy
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-enable-smart-eshell t
+            shell-default-height 10
+            shell-default-position 'bottom
+            shell-default-term-shell "/bin/zsh" )
      spell-checking
      syntax-checking
      themes-megapack
-     ;; version-control
+     ;;;;;;;;;;;;;;;;;;;;;;;;;  XTOF CUSTOMIZATION
      xtof-org
      xtof-fci
      )
@@ -214,59 +224,40 @@ layers configuration. You are free to put any user code."
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
 
   ;; ibuffer
-  (autoload 'ibuffer "ibuffer" "List buffers." t)
-  (setq ibuffer-saved-filter-groups
-        (quote (("default"
-                 ("dired" (mode . dired-mode))
-                 ("perl" (mode . cperl-mode))
-                 ("php" (mode . php-mode))
-                 ("python" (mode . python-mode))
-                 ("clojure" (mode . clojure-mode))
-                 ("lisp" (mode . lisp-mode))
-                 ("sass" (mode . scss-mode))
-                 ("ruby" (mode . ruby-mode))
-                 ("org" (mode . org-mode))
-                 ("irc" (mode . rcirc-mode))
-                 ("js" (mode . js2-mode))
-                 ("css" (mode . css-mode))
-                 ("html" (mode . html-mode))
-                 ("magit" (name . "\*magit"))
-                 ("ledger" (mode . ledger-mode))
-                 ("emacs" (or
-                           (mode . emacs-lisp-mode)
-                           (name . "\*eshell")
-                           (name . "^\\*scratch\\*$")
-                           (name . "^\\*Messages\\*$")))))))
-  (add-hook 'ibuffer-mode-hook
-            '(lambda ()
-               (ibuffer-auto-mode 1)
-               (ibuffer-switch-to-saved-filter-groups "default")))
-  (setq ibuffer-show-empty-filter-groups nil)
+  ;; (autoload 'ibuffer "ibuffer" "List buffers." t)
+  ;; (setq ibuffer-saved-filter-groups
+  ;;       (quote (("default"
+  ;;                ("dired" (mode . dired-mode))
+  ;;                ("perl" (mode . cperl-mode))
+  ;;                ("php" (mode . php-mode))
+  ;;                ("python" (mode . python-mode))
+  ;;                ("clojure" (mode . clojure-mode))
+  ;;                ("lisp" (mode . lisp-mode))
+  ;;                ("sass" (mode . scss-mode))
+  ;;                ("ruby" (mode . ruby-mode))
+  ;;                ("org" (mode . org-mode))
+  ;;                ("irc" (mode . rcirc-mode))
+  ;;                ("js" (mode . js2-mode))
+  ;;                ("css" (mode . css-mode))
+  ;;                ("html" (mode . html-mode))
+  ;;                ("magit" (name . "\*magit"))
+  ;;                ("ledger" (mode . ledger-mode))
+  ;;                ("emacs" (or
+  ;;                          (mode . emacs-lisp-mode)
+  ;;                          (name . "\*eshell")
+  ;;                          (name . "^\\*scratch\\*$")
+  ;;                          (name . "^\\*Messages\\*$")))))))
+  ;; (add-hook 'ibuffer-mode-hook
+  ;;           '(lambda ()
+  ;;              (ibuffer-auto-mode 1)
+  ;;              (ibuffer-switch-to-saved-filter-groups "default")))
+  ;; (setq ibuffer-show-empty-filter-groups nil)
 
 
   (indent-guide-global-mode)
   ;;(global-centered-cursor-mode)
   (global-aggressive-indent-mode)
   (fringe-mode -1)
-  
-  ;;  (eval-after-load "spacemacs"
-  ;; (progn (print "sdfjkljkl;dfsa")
-  ;;        ;;(xtof/org-agenda-config)
-
-  ;;        (setq org-agenda-custom-commands nil)
-  ;;        (add-to-list 'org-agenda-custom-commands
-  ;;                     `("cb" "CollectBox"
-  ;;                       ((alltodo ""))
-  ;;                       ((org-agenda-files (list ,(concat "~/Dropbox/org/refile.org"))))) t)
-
-  ;;        ;; Override the key definition for org-exit
-  ;;        ;;(define-key org-agenda-mode-map "x" 'xtof/org-agenda-done)
-  ;;        ;; Override the key definition
-  ;;        ;;(define-key org-agenda-mode-map "X" 'xtof/org-agenda-mark-done-and-add-followup)
-  ;;        ;; New key assignment
-  ;;        ;;(define-key org-agenda-mode-map "N" 'xtof/org-agenda-new)
-  ;;        )
-  ;; )
   (defun sanityinc/fci-enabled-p () (symbol-value 'fci-mode))
   (defvar sanityinc/fci-mode-suppressed nil)
   (make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
@@ -314,11 +305,12 @@ layers configuration. You are free to put any user code."
                                (smartparens-strict-mode t)
                                (show-smartparens-mode t)
                                (setq js2-basic-offset 2)) t)
-   ;; (yas-reload-all)
+    ;; (yas-reload-all)
     (add-hook 'js2-mode-hook #'yas-minor-mode)
     )
   ;;)
-
+  (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
+  (setq magit-push-always-verify nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
