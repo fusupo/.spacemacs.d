@@ -223,37 +223,6 @@ layers configuration. You are free to put any user code."
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
 
-  ;; ibuffer
-  ;; (autoload 'ibuffer "ibuffer" "List buffers." t)
-  ;; (setq ibuffer-saved-filter-groups
-  ;;       (quote (("default"
-  ;;                ("dired" (mode . dired-mode))
-  ;;                ("perl" (mode . cperl-mode))
-  ;;                ("php" (mode . php-mode))
-  ;;                ("python" (mode . python-mode))
-  ;;                ("clojure" (mode . clojure-mode))
-  ;;                ("lisp" (mode . lisp-mode))
-  ;;                ("sass" (mode . scss-mode))
-  ;;                ("ruby" (mode . ruby-mode))
-  ;;                ("org" (mode . org-mode))
-  ;;                ("irc" (mode . rcirc-mode))
-  ;;                ("js" (mode . js2-mode))
-  ;;                ("css" (mode . css-mode))
-  ;;                ("html" (mode . html-mode))
-  ;;                ("magit" (name . "\*magit"))
-  ;;                ("ledger" (mode . ledger-mode))
-  ;;                ("emacs" (or
-  ;;                          (mode . emacs-lisp-mode)
-  ;;                          (name . "\*eshell")
-  ;;                          (name . "^\\*scratch\\*$")
-  ;;                          (name . "^\\*Messages\\*$")))))))
-  ;; (add-hook 'ibuffer-mode-hook
-  ;;           '(lambda ()
-  ;;              (ibuffer-auto-mode 1)
-  ;;              (ibuffer-switch-to-saved-filter-groups "default")))
-  ;; (setq ibuffer-show-empty-filter-groups nil)
-
-
   (indent-guide-global-mode)
   ;;(global-centered-cursor-mode)
   (global-aggressive-indent-mode)
