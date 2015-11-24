@@ -278,6 +278,7 @@ layers configuration. You are free to put any user code."
     (add-hook 'js2-mode-hook #'yas-minor-mode)
     )
   ;;)
+  (print "fart")
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (setq magit-push-always-verify nil)
   )
