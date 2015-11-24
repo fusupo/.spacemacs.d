@@ -204,7 +204,6 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  (setq paradox-github-token '88adf94abea25c823db5d13c3e95f5ffd7ffbea8)
 
   ;; linum-mode
   (add-hook 'js2-mode-hook 'linum-mode)
