@@ -281,6 +281,7 @@ layers configuration. You are free to put any user code."
   (print "fart")
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (setq magit-push-always-verify nil)
+  (setq dotspacemacs-remap-Y-to-y$ nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -290,14 +291,20 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ansi-color-names-vector
+   ["#3C3836" "#FB4934" "#B8BB26" "#FABD2F" "#83A598" "#D3869B" "#8EC07C" "#EBDBB2"])
+ '(custom-safe-themes
+   (quote
+    ("98a619757483dc6614c266107ab6b19d315f93267e535ec89b7af3d62fb83cad" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" default)))
+ '(pos-tip-background-color "#36473A")
+ '(pos-tip-foreground-color "#FFFFC8"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#FDF4C1" :background "#282828"))))
+ '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
