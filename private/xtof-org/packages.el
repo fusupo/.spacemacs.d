@@ -495,15 +495,6 @@
   (progn
     (setq org-agenda-tags-column -136)
     (setq org-agenda-use-tag-inheritance nil)
-    ;; (setq org-agenda-files (quote ("~/Documents/org/inbox.org"
-    ;;                                "~/Documents/org/activity_log.org"
-    ;;                                "~/Documents/org/meditation_log.org"
-    ;;                                "~/Documents/org/dream_log.org"
-    ;;                                "~/Documents/org/memos.org"
-    ;;                                "~/Documents/org/flagged.org"
-    ;;                                "~/Documents/org/projects.org"
-    ;;                                "~/Documents/org/notes.org"
-    ;;                                "~/Documents/org/tga.org")))
     (setq org-agenda-time-grid
           '((daily today require-timed)
             "----------------"
@@ -616,22 +607,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  CAPTURE
 
-(defun xtof/org-capture-setup ()
-  (defvar
-    xtof/org-capture-project-template
-    "* PROJ %^{Project} %^G:PROJ:
+;;(defun xtof/org-capture-setup ()
+(defvar
+  xtof/org-capture-project-template
+  "* PROJ %^{Project} %^G:PROJ:
       %?")
-  (defvar
-    xtof/org-capture-task-template
-    "* TODO %^{Task} %^G
+(defvar
+  xtof/org-capture-task-template
+  "* TODO %^{Task} %^G
       :PROPERTIES:
       :CREATED: %U
       :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|3:00|4:00}
       :END:
       %?")
-  (defvar
-    xtof/org-capture-habit-template
-    "* TODO %^{Habit} %^G
+(defvar
+  xtof/org-capture-habit-template
+  "* TODO %^{Habit} %^G
       SCHEDULED: %^{schedule}T
       OPENED: %U
       :PROPERTIES:
@@ -640,86 +631,49 @@
       :END:
       %?
       %i")
-  (defvar
-    xtof/org-capture-memo-template
-    "* %^{Subject} %^G
+(defvar
+  xtof/org-capture-memo-template
+  "* %^{Subject} %^G
       :PROPERTIES:
       :TO: %^{to|Self}
       :DATE: %U
       :END:
       %?")
-  (defvar
-    xtof/org-capture-note-template
-    "* %^{Description} %^G
+(defvar
+  xtof/org-capture-note-template
+  "* %^{Description} %^G
       :PROPERTIES: 
       :DATE: %U
       :END:
       %?")
-  (defvar
-    xtof/org-capture-activity-log-template
-    "* %^{Title} %^G
+(defvar
+  xtof/org-capture-activity-log-template
+  "* %^{Title} %^G
       :PROPERTIES:
       :DATE: %U
       :END:
       %?")
-  (defvar
-    xtof/org-capture-dream-log-template
-    "* %^{Title} %^G
+(defvar
+  xtof/org-capture-dream-log-template
+  "* %^{Title} %^G
       %?")
-  (defvar
-    xtof/org-capture-meditation-log-template
-    "* %^{Title}
+(defvar
+  xtof/org-capture-meditation-log-template
+  "* %^{Title}
       :PROPERTIES:
       :STARTTIME: %^{start time}U
       :DURATION: %^{duration|0:30}
       :END:
       %?")
 
-  ;; (use-package org-capture
-  ;;   :ensure org
-  ;;   :defer t
-  ;;   :config (progn
-  (setq
-   org-capture-templates
-   `(("p" 
-      "Project" 
-      entry (file "~/Documents/org/projects.org") 
-      ,xtof/org-capture-project-template)
-     ("t"
-      "Task"
-      entry (file+headline "~/Documents/org/inbox.org" "Tasks")
-      ,xtof/org-capture-task-template)
-     ("h"
-      "Habit"
-      entry (file+headline "~/Documents/org/inbox.org" "Tasks")
-      ,xtof/org-capture-habit-template)
-     ("m"
-      "Memo" 
-      entry (file+datetree "~/Documents/org/memos.org") 
-      ,xtof/org-capture-memo-template)
-     ("n"
-      "Note"
-      entry (file+headline "~/Documents/org/notes.org" "Notes")
-      ,xtof/org-capture-note-template)
-     ;;
-     ("l" "logs")
-     ("la" 
-      "Activity Log Entry" 
-      entry (file+datetree "~/Documents/org/activity_log.org") 
-      ,xtof/org-capture-activity-log-template)
-     ("ld" 
-      "Dream Log Entry" 
-      entry (file+datetree "~/Documents/org/dream_log.org") 
-      ,xtof/org-capture-dream-log-template)
-     ("lm" 
-      "Meditation Log Entry" 
-      entry (file+datetree "~/Documents/org/meditation_log.org") 
-      ,xtof/org-capture-meditation-log-template)
-     )
-   )
-  ;;          )
-  ;; :bind (("C-c c" . org-capture)))
-  )
+;; (use-package org-capture
+;;   :ensure org
+;;   :defer t
+;;   :config (progn
+
+;;          )
+;; :bind (("C-c c" . org-capture)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -855,14 +809,11 @@
 
                    (eval-after-load "spacemacs"
                      (progn
-                       (print ";dfsa")
-
                        ;; ORG DIRECTORY
                        (setq xtof/org-directory "~/Dropbox/org")
                        ;; init directories
                        (setq org-directory xtof/org-directory)
                        (setq org-default-notes-file  (format "%s/%s" xtof/org-directory "inbox.org"))
-
                        (xtof/org-agenda-config)
                        ;;Override the key definition for org-exit
                        (define-key org-agenda-mode-map "x" 'xtof/org-agenda-done)
@@ -870,7 +821,6 @@
                        (define-key org-agenda-mode-map "X" 'xtof/org-agenda-mark-done-and-add-followup)
                        ;; ;;New key assignment
                        (define-key org-agenda-mode-map "N" 'xtof/org-agenda-new)
-
                        (setq org-agenda-files
                              '("~/Dropbox/org/inbox.org"
                                "~/Dropbox/org/activity_log.org"
@@ -884,6 +834,44 @@
                                ))
                        )
                      )
+                   (setq
+                    org-capture-templates
+                    `(("p" 
+                       "Project" 
+                       entry (file "~/Dropbox/org/projects.org") 
+                       ,xtof/org-capture-project-template)
+                      ("t"
+                       "Task"
+                       entry (file+headline "~/Dropbox/org/inbox.org" "Tasks")
+                       ,xtof/org-capture-task-template)
+                      ("h"
+                       "Habit"
+                       entry (file+headline "~/Dropbox/org/inbox.org" "Tasks")
+                       ,xtof/org-capture-habit-template)
+                      ("m"
+                       "Memo" 
+                       entry (file+datetree "~/Dropbox/org/memos.org") 
+                       ,xtof/org-capture-memo-template)
+                      ("n"
+                       "Note"
+                       entry (file+headline "~/Dropbox/org/notes.org" "Notes")
+                       ,xtof/org-capture-note-template)
+                      ;;
+                      ("l" "logs")
+                      ("la" 
+                       "Activity Log Entry" 
+                       entry (file+datetree "~/Dropbox/org/activity_log.org") 
+                       ,xtof/org-capture-activity-log-template)
+                      ("ld" 
+                       "Dream Log Entry" 
+                       entry (file+datetree "~/Dropbox/org/dream_log.org") 
+                       ,xtof/org-capture-dream-log-template)
+                      ("lm" 
+                       "Meditation Log Entry" 
+                       entry (file+datetree "~/Dropbox/org/meditation_log.org") 
+                       ,xtof/org-capture-meditation-log-template)
+                      )
+                    )
                    )
     )
   )
