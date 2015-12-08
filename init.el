@@ -213,13 +213,12 @@ user code."
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
- This function is called at the very end of Spacemacs initialization after
+This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
   ;; linum-mode
   (add-hook 'js2-mode-hook 'linum-mode)
   (add-hook 'emacs-lisp-mode-hook 'linum-mode)
-
   ;; automatic symbol highlight
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
@@ -297,6 +296,7 @@ layers configuration. You are free to put any user code."
  '(custom-safe-themes
    (quote
     ("98a619757483dc6614c266107ab6b19d315f93267e535ec89b7af3d62fb83cad" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" default)))
+ '(linum-format "%4d|")
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8"))
 
