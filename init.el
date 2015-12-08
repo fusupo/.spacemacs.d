@@ -282,6 +282,7 @@ layers configuration. You are free to put any user code."
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (setq magit-push-always-verify nil)
   (setq dotspacemacs-remap-Y-to-y$ nil)
+  (global-company-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
