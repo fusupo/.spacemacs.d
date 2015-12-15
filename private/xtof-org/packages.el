@@ -622,15 +622,15 @@
       %?")
 (defvar
   xtof/org-capture-habit-template
-  "* TODO %^{Habit} %^G
-      SCHEDULED: %^{schedule}T
-      OPENED: %U
-      :PROPERTIES:
-      :STYLE: habit
-      :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|3:00|4:00}
-      :END:
-      %?
-      %i")
+  "* TODO %^{Habit} %^G 
+  SCHEDULED: %^{schedule}T %^{repeat|.+1d|.+1d/2d|.+2d/4d|.+7|.+1w/2w|}
+  :PROPERTIES:
+  :STYLE: habit
+  :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|3:00|4:00}
+  :END:
+  OPENED: %U
+  %?
+  %i")
 (defvar
   xtof/org-capture-memo-template
   "* %^{Subject} %^G
@@ -734,8 +734,9 @@
                        '(org-habit
                          ;;org-mouse
                          org-panel))
-
-                 ;; refile
+                 ;;;;;;;;;;;;;;;;;;
+                 ;; -- REFILE -- ;;
+                 ;;;;;;;;;;;;;;;;;;
                  (setq org-reverse-note-order t)
                  (setq org-refile-use-outline-path nil)
                  (setq org-refile-allow-creating-parent-nodes 'confirm)
@@ -821,17 +822,24 @@
                        (define-key org-agenda-mode-map "X" 'xtof/org-agenda-mark-done-and-add-followup)
                        ;; ;;New key assignment
                        (define-key org-agenda-mode-map "N" 'xtof/org-agenda-new)
-                       (setq org-agenda-files
-                             '("~/Dropbox/org/inbox.org"
-                               "~/Dropbox/org/activity_log.org"
-                               "~/Dropbox/org/meditation_log.org"
-                               "~/Dropbox/org/dream_log.org"
-                               "~/Dropbox/org/memos.org"
-                               "~/Dropbox/org/flagged.org"
-                               "~/Dropbox/org/projects.org"
-                               "~/Dropbox/org/notes.org"
-                               "~/Dropbox/org/tga.org"
-                               ))
+                       (setq org-agenda-files (list xtof/org-directory))
+                       ;; Refile on top of file max
+                       (setq org-refile-use-outline-path 'file)
+                       ;; use a depth level of 6 max
+                       (setq org-refile-targets
+                             '((org-agenda-files . (:maxlevel . 4))))
+                       (setq org-outline-path-complete-in-steps nil)
+                       ;; (setq org-agenda-files
+                       ;;       '("~/Dropbox/org/inbox.org"
+                       ;;         "~/Dropbox/org/activity_log.org"
+                       ;;         "~/Dropbox/org/meditation_log.org"
+                       ;;         "~/Dropbox/org/dream_log.org"
+                       ;;         "~/Dropbox/org/memos.org"
+                       ;;         "~/Dropbox/org/flagged.org"
+                       ;;         "~/Dropbox/org/projects.org"
+                       ;;         "~/Dropbox/org/notes.org"
+                       ;;         "~/Dropbox/org/tga.org"
+                       ;;         ))
                        )
                      )
                    (setq
