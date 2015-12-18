@@ -611,15 +611,15 @@
 (defvar
   xtof/org-capture-project-template
   "* PROJ %^{Project} %^G:PROJ:
-      %?")
+  %?")
 (defvar
   xtof/org-capture-task-template
   "* TODO %^{Task} %^G
-      :PROPERTIES:
-      :CREATED: %U
-      :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|3:00|4:00}
-      :END:
-      %?")
+  :PROPERTIES:
+  :CREATED: %U
+  :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|3:00|4:00}
+  :END:
+  %?")
 (defvar
   xtof/org-capture-habit-template
   "* TODO %^{Habit} %^G 
@@ -634,46 +634,37 @@
 (defvar
   xtof/org-capture-memo-template
   "* %^{Subject} %^G
-      :PROPERTIES:
-      :TO: %^{to|Self}
-      :DATE: %U
-      :END:
-      %?")
+  :PROPERTIES:
+  :TO: %^{to|Self}
+  :DATE: %U
+  :END:
+  %?")
 (defvar
   xtof/org-capture-note-template
   "* %^{Description} %^G
-      :PROPERTIES: 
-      :DATE: %U
-      :END:
-      %?")
+  :PROPERTIES: 
+  :DATE: %U
+  :END:
+  %?")
 (defvar
   xtof/org-capture-activity-log-template
   "* %^{Title} %^G
-      :PROPERTIES:
-      :DATE: %U
-      :END:
-      %?")
+  :PROPERTIES:
+  :DATE: %U
+  :END:
+  %?")
 (defvar
   xtof/org-capture-dream-log-template
   "* %^{Title} %^G
-      %?")
+  %?")
 (defvar
   xtof/org-capture-meditation-log-template
   "* %^{Title}
-      :PROPERTIES:
-      :STARTTIME: %^{start time}U
-      :DURATION: %^{duration|0:30}
-      :END:
-      %?")
-
-;; (use-package org-capture
-;;   :ensure org
-;;   :defer t
-;;   :config (progn
-
-;;          )
-;; :bind (("C-c c" . org-capture)))
-
+  :PROPERTIES:
+  :STARTTIME: %^{start time}U
+  :DURATION: %^{duration|0:30}
+  :END:
+  %?")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
