@@ -326,7 +326,7 @@ layers configuration. You are free to put any user code."
  '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
  '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
  '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
- '(org-habit-clear-face ((t (:background "LightCyan4"))))
+ '(org-habit-clear-face ((t (:background "gray35"))))
  '(org-habit-clear-future-face ((t (:background "gray20"))))
  '(org-habit-overdue-face ((t (:background "darkred"))))
  '(org-habit-overdue-future-face ((t (:inherit holiday))))
