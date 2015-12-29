@@ -301,6 +301,7 @@ layers configuration. You are free to put any user code."
  '(linum-format "%4d|")
  '(neo-theme (quote arrow))
  '(neo-window-width 25)
+ '(org-archive-location "~/Dropbox/org/archive/%s_archive::")
  '(org-habit-completed-glyph 124)
  '(org-habit-following-days 7)
  '(org-habit-graph-column 65)
@@ -308,6 +309,7 @@ layers configuration. You are free to put any user code."
  '(org-habit-show-all-today t)
  '(org-habit-show-habits-only-for-today t)
  '(org-habit-today-glyph 45)
+ '(paradox-github-token t)
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8"))
 
@@ -333,4 +335,5 @@ layers configuration. You are free to put any user code."
  '(org-habit-overdue-face ((t (:background "darkred"))))
  '(org-habit-overdue-future-face ((t (:inherit holiday))))
  '(org-habit-ready-face ((t (:background "#B8BB26"))))
- '(org-habit-ready-future-face ((t (:background "#427B58")))))
+ '(org-habit-ready-future-face ((t (:background "#427B58"))))
+ '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
