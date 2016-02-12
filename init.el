@@ -33,7 +33,7 @@ values."
      javascript
      git
      ;;github
-     ;; markdown
+     markdown
      org
      react
      ;;restclient
@@ -95,13 +95,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(darktooth
-                         solarized-dark
-                         spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         leuven
-                         monokai
-                         zenburn)
+                         twilight-bright)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -283,6 +277,7 @@ layers configuration. You are free to put any user code."
   (setq dotspacemacs-remap-Y-to-y$ nil)
   (global-company-mode)
   (setq split-width-threshold 100)
+  (setq-default evil-escape-key-sequence "jk")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -336,4 +331,5 @@ layers configuration. You are free to put any user code."
  '(org-habit-overdue-future-face ((t (:inherit holiday))))
  '(org-habit-ready-face ((t (:background "#B8BB26"))))
  '(org-habit-ready-future-face ((t (:background "#427B58"))))
- '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
+ '(region ((t (:background "#300000" :distant-foreground "#FDF4C1"))))
+ )
