@@ -16,6 +16,7 @@
       '(
         js2-mode 
         skewer-mode
+        livid-mode
         ))
 
 ;; List of packages to exclude.
@@ -28,12 +29,30 @@
   (use-package skewer-mode
     :ensure t
     :defer t 
-    :config
+    :init
     (progn
       (add-hook 'js2-mode-hook 'skewer-mode)
       (add-hook 'css-mode-hook 'skewer-css-mode)
-      (add-hook 'html-mode-hook 'skewer-html-mode))))
+      (add-hook 'html-mode-hook 'skewer-html-mode)
+      (httpd-start))
+    :config
+    (progn
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ss" 'run-skewer)
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "si" 'skewer-repl)
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "sb" 'skewer-load-buffer)
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ee" 'skewer-eval-last-expression)
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ep" 'skewer-eval-print-last-expression)
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "sf" 'skewer-eval-defun)
+      )))
 
-  ;; Often the body of an initialize function uses `use-package'
-  ;; For more info on `use-package', see readme:
-  ;; https://github.com/jwiegley/use-package
+(defun xtof-web/init-livid-mode ()
+  (use-package livid-mode
+    :defer t
+    :init
+    (progn
+      (defalias 'js-live-eval 'livid-mode "Minor mode for automatic evaluation of a JavaScript buffer on every change")
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode "st" 'js-live-eval))))
+
+;; Often the body of an initialize function uses `use-package'
+;; For more info on `use-package', see readme:
+;; https://github.com/jwiegley/use-package

@@ -94,7 +94,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(darktooth
+   dotspacemacs-themes '(oldlace
+                         darktooth
                          solarized-dark
                          spacemacs-dark
                          spacemacs-light
@@ -283,6 +284,54 @@ layers configuration. You are free to put any user code."
   (setq dotspacemacs-remap-Y-to-y$ nil)
   (global-company-mode)
   (setq split-width-threshold 100)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; use web-mode for .jsx files
+  ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+  ;; ;; http://www.flycheck.org/manual/latest/index.html
+  ;;   (require 'flycheck)
+
+  ;; ;; turn on flychecking globally
+  ;;  (add-hook 'after-init-hook #'global-flycheck-mode)
+
+  ;; ;; disable jshint since we prefer eslint checking
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;;                       '(javascript-jshint)))
+
+  ;; ;; use eslint with web-mode for jsx files
+  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+  ;; ;; customize flycheck temp file prefix
+  ;; (setq-default flycheck-temp-prefix ".flycheck")
+
+  ;; ;; disable json-jsonlist checking for json files
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;;                       '(json-jsonlist)))
+
+  ;; ;; https://github.com/purcell/exec-path-from-shell
+  ;; ;; only need exec-path-from-shell on OSX
+  ;; ;; this hopefully sets up path and other vars better
+  ;; (when (memq window-system '(mac ns))
+  ;;   (exec-path-from-shell-initialize))
+
+  ;; ;; adjust indents for web-mode to 2 spaces
+  ;; (defun my-web-mode-hook ()
+  ;;   "Hooks for Web mode. Adjust indents"
+  ;; ;;; http://web-mode.org/
+  ;;   (setq web-mode-markup-indent-offset 2)
+  ;;   (setq web-mode-css-indent-offset 2)
+  ;;   (setq web-mode-code-indent-offset 2))
+  ;; (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+  ;; ;; for better jsx syntax-highlighting in web-mode
+  ;; ;; - courtesy of Patrick @halbtuerke
+  ;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
+  ;;   (if (equal web-mode-content-type "jsx")
+  ;;       (let ((web-mode-enable-part-face nil))
+  ;;         ad-do-it)
+  ;;     ad-do-it))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -318,22 +367,23 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
- '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
- '(ahs-face ((t (:background "gray60" :foreground "black"))))
- '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
- '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
- '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
- '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
- '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
- '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
- '(org-habit-clear-face ((t (:background "gray35"))))
- '(org-habit-clear-future-face ((t (:background "gray20"))))
- '(org-habit-overdue-face ((t (:background "darkred"))))
- '(org-habit-overdue-future-face ((t (:inherit holiday))))
- '(org-habit-ready-face ((t (:background "#B8BB26"))))
- '(org-habit-ready-future-face ((t (:background "#427B58"))))
- '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
+ ;; '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
+ ;; '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
+ ;; '(ahs-face ((t (:background "gray60" :foreground "black"))))
+ ;; '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
+ ;; '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ ;; '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ ;; '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
+ ;; '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
+ ;; '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
+ ;; '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
+ ;; '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
+ ;; '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
+ ;; '(org-habit-clear-face ((t (:background "gray35"))))
+ ;; '(org-habit-clear-future-face ((t (:background "gray20"))))
+ ;; '(org-habit-overdue-face ((t (:background "darkred"))))
+ ;; '(org-habit-overdue-future-face ((t (:inherit holiday))))
+ ;; '(org-habit-ready-face ((t (:background "#B8BB26"))))
+ ;; '(org-habit-ready-future-face ((t (:background "#427B58"))))
+ ;; '(region ((t (:background "#300000" :distant-foreground "#FDF4C1"))))
+ )
