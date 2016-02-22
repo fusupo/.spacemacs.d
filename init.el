@@ -33,7 +33,7 @@ values."
      javascript
      git
      ;;github
-     ;; markdown
+     markdown
      org
      react
      ;;restclient
@@ -94,15 +94,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(oldlace
-                         darktooth
-                         solarized-dark
-                         spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         leuven
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(
+                         twilight-bright
+                         darktooth)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -284,6 +278,8 @@ layers configuration. You are free to put any user code."
   (setq dotspacemacs-remap-Y-to-y$ nil)
   (global-company-mode)
   (setq split-width-threshold 100)
+  (setq-default evil-escape-key-sequence "jk")
+  (setq markdown-command "pandoc -f markdown_github")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; ;; use web-mode for .jsx files
   ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
@@ -362,28 +358,28 @@ layers configuration. You are free to put any user code."
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8"))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;; '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
- ;; '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
- ;; '(ahs-face ((t (:background "gray60" :foreground "black"))))
- ;; '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
- ;; '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- ;; '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- ;; '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
- ;; '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
- ;; '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
- ;; '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
- ;; '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
- ;; '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
- ;; '(org-habit-clear-face ((t (:background "gray35"))))
- ;; '(org-habit-clear-future-face ((t (:background "gray20"))))
- ;; '(org-habit-overdue-face ((t (:background "darkred"))))
- ;; '(org-habit-overdue-future-face ((t (:inherit holiday))))
- ;; '(org-habit-ready-face ((t (:background "#B8BB26"))))
- ;; '(org-habit-ready-future-face ((t (:background "#427B58"))))
- ;; '(region ((t (:background "#300000" :distant-foreground "#FDF4C1"))))
- )
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
+;;  '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
+;;  '(ahs-face ((t (:background "gray60" :foreground "black"))))
+;;  '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
+;;  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+;;  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+;;  '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
+;;  '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
+;;  '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
+;;  '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
+;;  '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
+;;  '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
+;;  '(org-habit-clear-face ((t (:background "gray35"))))
+;;  '(org-habit-clear-future-face ((t (:background "gray20"))))
+;;  '(org-habit-overdue-face ((t (:background "darkred"))))
+;;  '(org-habit-overdue-future-face ((t (:inherit holiday))))
+;;  '(org-habit-ready-face ((t (:background "#B8BB26"))))
+;;  '(org-habit-ready-future-face ((t (:background "#427B58"))))
+;;  '(region ((t (:background "#300000" :distant-foreground "#FDF4C1"))))
+;;  )
