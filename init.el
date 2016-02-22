@@ -280,7 +280,10 @@ layers configuration. You are free to put any user code."
   (setq split-width-threshold 100)
   (setq-default evil-escape-key-sequence "jk")
   (setq markdown-command "pandoc -f markdown_github")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;(global-company-mode t)
+  (setq org-archive-location "~/Dropbox/org/archive/%s_archive::")
+  (setq paradox-github-token t)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; ;; use web-mode for .jsx files
   ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
@@ -314,6 +317,7 @@ layers configuration. You are free to put any user code."
 
   ;; ;; adjust indents for web-mode to 2 spaces
   ;; (defun my-web-mode-hook ()
+
   ;;   "Hooks for Web mode. Adjust indents"
   ;; ;;; http://web-mode.org/
   ;;   (setq web-mode-markup-indent-offset 2)
@@ -342,19 +346,9 @@ layers configuration. You are free to put any user code."
  '(custom-safe-themes
    (quote
     ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "dcf229d4673483cb7b38505360824fa56a0d7b52f54edbcdca98cf5059fa1662" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "98a619757483dc6614c266107ab6b19d315f93267e535ec89b7af3d62fb83cad" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" default)))
- '(global-company-mode t)
  '(linum-format "%4d|")
  '(neo-theme (quote arrow))
  '(neo-window-width 25)
- '(org-archive-location "~/Dropbox/org/archive/%s_archive::")
- ;; '(org-habit-completed-glyph 124)
- ;; '(org-habit-following-days 7)
- ;; '(org-habit-graph-column 65)
- ;; '(org-habit-preceding-days 7)
- ;; '(org-habit-show-all-today t)
- ;; '(org-habit-show-habits-only-for-today t)
- ;; '(org-habit-today-glyph 45)
- '(paradox-github-token t)
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8"))
 
@@ -381,5 +375,4 @@ layers configuration. You are free to put any user code."
  '(org-habit-overdue-future-face ((t (:inherit holiday))))
  '(org-habit-ready-face ((t (:background "#B8BB26"))))
  '(org-habit-ready-future-face ((t (:background "#427B58"))))
- '(region ((t (:background "#300000" :distant-foreground "#FDF4C1"))))
- )
+ '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
