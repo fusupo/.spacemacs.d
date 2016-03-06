@@ -717,7 +717,7 @@
                           :weight 'bold)
       (setq neo-persist-show t)
       (setq neo-show-updir-line t)
-      (setq neo-window-width 25)
+      ;; (setq neo-window-width 25)
       ;; (add-hook 'neotree-mode-hook
       ;;           (lambda ()
       ;;             (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)

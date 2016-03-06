@@ -94,8 +94,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(darktooth
+   dotspacemacs-themes '(
+                         ;;darktooth
                          twilight-bright
+                         xtof-dark
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -204,6 +206,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  (setq custom-theme-directory "~/.spacemacs.d/")
   )
 
 (defun dotspacemacs/user-config ()
@@ -249,6 +252,7 @@ layers configuration. You are free to put any user code."
   ;;    ("\\.json\\'" . js2-mode))
   ;;   ;;:interpreter ("node" . js2mode)
   ;;   :config
+
   (progn
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;  https://github.com/jakubholynet/dotfiles/blob/dotf/.live-packs/jholy-pack/lib/nodejs-repl-eval.el
@@ -285,35 +289,35 @@ layers configuration. You are free to put any user code."
   (setq paradox-github-token t)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; ;; use web-mode for .jsx files
-  ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-  ;; ;; http://www.flycheck.org/manual/latest/index.html
-  ;;   (require 'flycheck)
+  ;; http://www.flycheck.org/manual/latest/index.html
+  (require 'flycheck)
 
-  ;; ;; turn on flychecking globally
-  ;;  (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; turn on flychecking globally
+  (add-hook 'after-init-hook #'global-flycheck-mode)
 
-  ;; ;; disable jshint since we prefer eslint checking
-  ;; (setq-default flycheck-disabled-checkers
-  ;;               (append flycheck-disabled-checkers
-  ;;                       '(javascript-jshint)))
+  ;; disable jshint since we prefer eslint checking
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
 
-  ;; ;; use eslint with web-mode for jsx files
-  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+  ;; use eslint with web-mode for jsx files
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
 
-  ;; ;; customize flycheck temp file prefix
-  ;; (setq-default flycheck-temp-prefix ".flycheck")
+  ;; customize flycheck temp file prefix
+  (setq-default flycheck-temp-prefix ".flycheck")
 
-  ;; ;; disable json-jsonlist checking for json files
-  ;; (setq-default flycheck-disabled-checkers
-  ;;               (append flycheck-disabled-checkers
-  ;;                       '(json-jsonlist)))
+  ;; disable json-jsonlist checking for json files
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(json-jsonlist)))
 
-  ;; ;; https://github.com/purcell/exec-path-from-shell
-  ;; ;; only need exec-path-from-shell on OSX
-  ;; ;; this hopefully sets up path and other vars better
-  ;; (when (memq window-system '(mac ns))
-  ;;   (exec-path-from-shell-initialize))
+  ;; https://github.com/purcell/exec-path-from-shell
+  ;; only need exec-path-from-shell on OSX
+  ;; this hopefully sets up path and other vars better
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize))
 
   ;; ;; adjust indents for web-mode to 2 spaces
   ;; (defun my-web-mode-hook ()
@@ -336,43 +340,43 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#3C3836" "#FB4934" "#B8BB26" "#FABD2F" "#83A598" "#D3869B" "#8EC07C" "#EBDBB2"])
- '(custom-safe-themes
-   (quote
-    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "dcf229d4673483cb7b38505360824fa56a0d7b52f54edbcdca98cf5059fa1662" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "98a619757483dc6614c266107ab6b19d315f93267e535ec89b7af3d62fb83cad" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" default)))
- '(linum-format "%4d|")
- '(neo-theme (quote arrow))
- '(neo-window-width 25)
- '(pos-tip-background-color "#36473A")
- '(pos-tip-foreground-color "#FFFFC8"))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(ansi-color-names-vector
+;;    ["#3C3836" "#FB4934" "#B8BB26" "#FABD2F" "#83A598" "#D3869B" "#8EC07C" "#EBDBB2"])
+;;  '(custom-safe-themes
+;;    (quote
+;;     ("de77bc734c953053da156f82d65c9e28dd6744145dd2b1fafc44f5b5d51cc6b3" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "dcf229d4673483cb7b38505360824fa56a0d7b52f54edbcdca98cf5059fa1662" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "98a619757483dc6614c266107ab6b19d315f93267e535ec89b7af3d62fb83cad" "3a69621a68c2d3550a4c777ffc000e1ea66f5bc2f61112814c591e1bda3f5704" default)))
+;;  '(linum-format "%4d|")
+;;  '(neo-theme (quote arrow))
+;;  '(neo-window-width 25)
+;;  '(pos-tip-background-color "#36473A")
+;;  '(pos-tip-foreground-color "#FFFFC8"))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
- '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
- '(ahs-face ((t (:background "gray60" :foreground "black"))))
- '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
- '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
- '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
- '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
- '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
- '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
- '(org-habit-clear-face ((t (:background "gray35"))))
- '(org-habit-clear-future-face ((t (:background "gray20"))))
- '(org-habit-overdue-face ((t (:background "darkred"))))
- '(org-habit-overdue-future-face ((t (:inherit holiday))))
- '(org-habit-ready-face ((t (:background "#B8BB26"))))
- '(org-habit-ready-future-face ((t (:background "#427B58"))))
- '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:foreground "#FDF4C1" :background "#282828" :family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 83 :width normal))))
+;;  '(ahs-definition-face ((t (:background "CadetBlue" :foreground "moccasin"))))
+;;  '(ahs-face ((t (:background "gray60" :foreground "black"))))
+;;  '(ahs-plugin-whole-buffer-face ((t (:background "Dark Goldenrod" :foreground "Black"))))
+;;  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+;;  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+;;  '(js2-function-call ((t (:inherit default :foreground "DarkSeaGreen4"))))
+;;  '(neo-dir-link-face ((t (:inherit magit-head :weight extra-bold))))
+;;  '(neo-vc-default-face ((t (:foreground "#7C6F64"))))
+;;  '(neo-vc-edited-face ((t (:foreground "#DD6F48"))))
+;;  '(neo-vc-up-to-date-face ((t (:foreground "#FDF4C1"))))
+;;  '(org-done ((t (:foreground "#B8BB26" :bold t :weight bold))))
+;;  '(org-habit-clear-face ((t (:background "gray35"))))
+;;  '(org-habit-clear-future-face ((t (:background "gray20"))))
+;;  '(org-habit-overdue-face ((t (:background "darkred"))))
+;;  '(org-habit-overdue-future-face ((t (:inherit holiday))))
+;;  '(org-habit-ready-face ((t (:background "#B8BB26"))))
+;;  '(org-habit-ready-future-face ((t (:background "#427B58"))))
+;;  '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
