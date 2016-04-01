@@ -681,7 +681,14 @@
   :DURATION: %^{duration|0:30}
   :END:
   %?")
-
+(defvar
+  xtof/org-capture-tga-log-template
+  "* %^{Title} %^G
+  :PROPERTIES:
+  :STARTTIME: %^{start time}U
+  :ENDTIME: %^{end time}U
+  :END:
+  %?")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun xtof-org/pre-init-neotree ()
@@ -885,6 +892,10 @@
                        "Meditation Log Entry" 
                        entry (file+datetree "~/Dropbox/org/meditation_log.org") 
                        ,xtof/org-capture-meditation-log-template)
+                      ("lt" 
+                       "TGA Log Entry" 
+                       entry (file+datetree "~/Dropbox/org/tga_log.org") 
+                       ,xtof/org-capture-tga-log-template)
                       )
                     )
                    )
