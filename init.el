@@ -336,6 +336,19 @@ layers configuration. You are free to put any user code."
   ;;       (let ((web-mode-enable-part-face nil))
   ;;         ad-do-it)
   ;;     ad-do-it))
+  (setq org-publish-project-alist
+        '(("fusupo.github.io/index.html"
+           :base-directory "~/Dropbox/fusupo.github.io/src/"
+           :publishing-directory "~/Dropbox/fusupo.github.io/"
+           :publishing-function org-html-publish-to-html
+           ;;:exclude "*"
+           :html-head-include-default-style nil)
+          ("fusupo.github.io/posts/"
+           :base-directory "~/Dropbox/fusupo.github.io/src/posts/"
+           :publishing-directory "~/Dropbox/fusupo.github.io/posts/"
+           :publishing-function org-html-publish-to-html
+           :html-head-include-default-style nil
+           :html-preamble "<div>THIS SHIT IS DEFINED IN MY INIT.EL</div>")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
