@@ -32,7 +32,7 @@ values."
      ibuffer
      javascript
      git
-     ;;github
+     github
      markdown
      org
      react
@@ -217,6 +217,7 @@ layers configuration. You are free to put any user code."
   ;; linum-mode
   (add-hook 'js2-mode-hook 'linum-mode)
   (add-hook 'emacs-lisp-mode-hook 'linum-mode)
+
   ;; automatic symbol highlight
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
@@ -266,7 +267,7 @@ layers configuration. You are free to put any user code."
     ;;             (js2r-add-keybindings-with-prefix "C-c C-m")))
     (setq js-indent-level 2)
     (setq js2-highlight-level 3)
-    (setq js2-indent-switc-body t)
+    (setq js2-indent-switch-body t)
     ;;(setq js2-mode-indent-inhibit-undo nil)
     ;; (add-hook 'js2-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
     (add-hook 'js2-mode-hook (lambda ()
@@ -274,8 +275,7 @@ layers configuration. You are free to put any user code."
                                (show-smartparens-mode t)
                                (setq js2-basic-offset 2)) t)
     ;; (yas-reload-all)
-    (add-hook 'js2-mode-hook #'yas-minor-mode)
-    )
+    (add-hook 'js2-mode-hook #'yas-minor-mode))
   ;;)
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (setq magit-push-always-verify nil)
