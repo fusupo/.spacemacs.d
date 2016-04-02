@@ -206,8 +206,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-  (setq custom-theme-directory "~/.spacemacs.d/")
-  )
+  (setq custom-theme-directory "~/.spacemacs.d/"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -217,6 +216,7 @@ layers configuration. You are free to put any user code."
   ;; linum-mode
   (add-hook 'js2-mode-hook 'linum-mode)
   (add-hook 'emacs-lisp-mode-hook 'linum-mode)
+  (add-hook 'clojure-mode-hook 'linum-mode)
 
   ;; automatic symbol highlight
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
