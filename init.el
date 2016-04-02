@@ -221,6 +221,7 @@ layers configuration. You are free to put any user code."
   ;; automatic symbol highlight
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
+  (add-hook 'clojure-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
 
   (indent-guide-global-mode)
   ;;(global-centered-cursor-mode)
