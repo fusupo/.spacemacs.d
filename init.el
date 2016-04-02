@@ -283,6 +283,7 @@ layers configuration. You are free to put any user code."
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (add-hook 'js2-mode-hook 'spacemacs/toggle-spelling-checking-off)
   (add-hook 'clojure-mode-hook 'spacemacs/toggle-spelling-checking-off)
+  (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-spelling-checking-off)
 
   (setq magit-push-always-verify nil)
   (setq dotspacemacs-remap-Y-to-y$ nil)
