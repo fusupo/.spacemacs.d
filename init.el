@@ -356,7 +356,8 @@ layers configuration. You are free to put any user code."
            :publishing-directory "~/Dropbox/fusupo.github.io/posts/"
            :publishing-function org-html-publish-to-html
            :html-head-include-default-style nil
-           :html-preamble "<div>THIS SHIT IS DEFINED IN MY INIT.EL</div>")))
+           :html-preamble "<div>THIS SHIT IS DEFINED IN MY INIT.EL</div>")
+          ("fusupo.github.io" :components ("fusupo.github.io/index.html" "fusupo.github.io/posts/"))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
