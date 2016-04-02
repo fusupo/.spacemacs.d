@@ -277,65 +277,70 @@ layers configuration. You are free to put any user code."
     ;; (yas-reload-all)
     (add-hook 'js2-mode-hook #'yas-minor-mode))
   ;;)
+
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
+  (add-hook 'js2-mode-hook 'spacemacs/toggle-spelling-checking-off)
+  (add-hook 'clojure-mode-hook 'spacemacs/toggle-spelling-checking-off)
+
   (setq magit-push-always-verify nil)
   (setq dotspacemacs-remap-Y-to-y$ nil)
   (global-company-mode)
-  (setq split-width-threshold 100)
+  ;;(setq split-width-threshold 100)
   (setq-default evil-escape-key-sequence "jk")
   (setq markdown-command "pandoc -f markdown_github")
   ;;(global-company-mode t)
   (setq org-archive-location "~/Dropbox/org/archive/%s_archive::")
-  (setq paradox-github-token t)
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; ;; use web-mode for .jsx files
-  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+  ;; (setq paradox-github-token t)
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; ;; use web-mode for .jsx files
+  ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-  ;; http://www.flycheck.org/manual/latest/index.html
-  (require 'flycheck)
+  ;; ;; http://www.flycheck.org/manual/latest/index.html
+  ;; (require 'flycheck)
 
-  ;; turn on flychecking globally
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; ;; turn on flychecking globally
+  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-  ;; disable jshint since we prefer eslint checking
-  (setq-default flycheck-disabled-checkers
-                (append flycheck-disabled-checkers
-                        '(javascript-jshint)))
+  ;; ;; disable jshint since we prefer eslint checking
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;;                       '(javascript-jshint)))
 
-  ;; use eslint with web-mode for jsx files
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  ;; ;; use eslint with web-mode for jsx files
+  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
 
-  ;; customize flycheck temp file prefix
-  (setq-default flycheck-temp-prefix ".flycheck")
+  ;; ;; customize flycheck temp file prefix
+  ;; (setq-default flycheck-temp-prefix ".flycheck")
 
-  ;; disable json-jsonlist checking for json files
-  (setq-default flycheck-disabled-checkers
-                (append flycheck-disabled-checkers
-                        '(json-jsonlist)))
+  ;; ;; disable json-jsonlist checking for json files
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;;                       '(json-jsonlist)))
 
-  ;; https://github.com/purcell/exec-path-from-shell
-  ;; only need exec-path-from-shell on OSX
-  ;; this hopefully sets up path and other vars better
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize))
+  ;; ;; https://github.com/purcell/exec-path-from-shell
+  ;; ;; only need exec-path-from-shell on OSX
+  ;; ;; this hopefully sets up path and other vars better
+  ;; (when (memq window-system '(mac ns))
+  ;;   (exec-path-from-shell-initialize))
 
-  ;; ;; adjust indents for web-mode to 2 spaces
-  ;; (defun my-web-mode-hook ()
+  ;; ;; ;; adjust indents for web-mode to 2 spaces
+  ;; ;; (defun my-web-mode-hook ()
 
-  ;;   "Hooks for Web mode. Adjust indents"
-  ;; ;;; http://web-mode.org/
-  ;;   (setq web-mode-markup-indent-offset 2)
-  ;;   (setq web-mode-css-indent-offset 2)
-  ;;   (setq web-mode-code-indent-offset 2))
-  ;; (add-hook 'web-mode-hook  'my-web-mode-hook)
+  ;; ;;   "Hooks for Web mode. Adjust indents"
+  ;; ;; ;;; http://web-mode.org/
+  ;; ;;   (setq web-mode-markup-indent-offset 2)
+  ;; ;;   (setq web-mode-css-indent-offset 2)
+  ;; ;;   (setq web-mode-code-indent-offset 2))
+  ;; ;; (add-hook 'web-mode-hook  'my-web-mode-hook)
 
-  ;; ;; for better jsx syntax-highlighting in web-mode
-  ;; ;; - courtesy of Patrick @halbtuerke
-  ;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
-  ;;   (if (equal web-mode-content-type "jsx")
-  ;;       (let ((web-mode-enable-part-face nil))
-  ;;         ad-do-it)
-  ;;     ad-do-it))
+  ;; ;; ;; for better jsx syntax-highlighting in web-mode
+  ;; ;; ;; - courtesy of Patrick @halbtuerke
+  ;; ;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
+  ;; ;;   (if (equal web-mode-content-type "jsx")
+  ;; ;;       (let ((web-mode-enable-part-face nil))
+  ;; ;;         ad-do-it)
+  ;; ;
+                                        ;     ad-do-it))
   (setq org-publish-project-alist
         '(("fusupo.github.io/index.html"
            :base-directory "~/Dropbox/fusupo.github.io/src/"
