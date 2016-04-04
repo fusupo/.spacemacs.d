@@ -343,21 +343,152 @@ layers configuration. You are free to put any user code."
   ;; ;;       (let ((web-mode-enable-part-face nil))
   ;; ;;         ad-do-it)
   ;; ;
-                                        ;     ad-do-it))
+  ;;     ad-do-it))
+  (defun xtof/org-export-header ()
+    (concat
+     "<header id='header'>"
+     "<a href='/about'>"
+     ;;"<img id='avatar' class='2x' src='/assets/images/avatar.png'>"
+     "</a>"
+     "<h1>Marc Christophe</h1>"
+     "<h4>Exploring Novel Software Architectures</h4>"
+     "</header>"))
+  
+  (defun xtof/org-export-preamble (info)
+    (cond ((string= (car (plist-get info :title)) "index")
+           (concat  "<nav>"
+                    "<a href= 'about.html '>ABOUT</a>"
+                    "</nav>"
+                    (xtof/org-export-header)
+                    "<hr>"))
+          ((string= (car (plist-get info :title)) "about")
+           (concat  "<nav>"
+                    "<a href= 'index.html '>HOME</a>"
+                    "</nav>"
+                    (xtof/org-export-header)
+                    "<hr>"))
+          (t (concat  "<nav>"
+                      "<a href= '../index.html '>HOME</a> | "
+                      "<a href= '../about.html '>ABOUT</a>"
+                      "</nav>"
+                      "<hr>")))
+    )
+
+  (defun xtof/org-export-disqus-wiget ()
+    (concat
+     "<p></p>"
+     "<div id='disqus_thread'></div>"
+     "<script>"
+     ;; /**
+     ;; * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     ;; * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     ;; */
+     ;; /*
+     ;; var disqus_config = function () {
+     ;; this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+     ;; this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+     ;; };
+     ;; */
+     "(function() { /*DON'T EDIT BELOW THIS LINE*/"
+     "var d = document, s = d.createElement('script');"
+     "s.src = 'http://fusupogithubio.disqus.com/embed.js';"
+     "s.setAttribute ('data-timestamp', +new Date());"
+     "(d.head || d.body).appendChild(s);"
+     "})();"
+     "</script>"
+     "<noscript>"
+     "Please enable JavaScript to view the "
+     "<a href='https://disqus.com/?ref_noscript' rel='nofollow'>"
+     "comments powered by Disqus."
+     "</a>"
+     "</noscript>"
+     "<script id='dsq-count-scr' src='http://fusupogithubio.disqus.com/count.js' async></script>"
+     ))
+
+  (defun xtof/org-export-google-analytics-widget ()
+    (concat
+     "<script>"
+     "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){"
+     "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),"
+     "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)"
+     "})(window,document,'script','//www.google-analytics.com/analytics.js','ga');"
+     "ga('create', 'UA-75904999-1', 'auto');"
+     "ga('send', 'pageview');"
+     "</script>"))
+
+  (defun xtof/org-export-footer ()
+    (concat
+     "<footer id='footer'>"
+     "<hr></hr>"
+     "<p class='small'>© Copyright 2016 Marc Christophe</p>"
+     "<p>"
+     "<a href='https://twitter.com/fusupo' target='_blank'>Twitter</a> | "
+     "<a href='https://www.linkedin.com/in/marcpchristophe' target='_blank'>LinkedIn</a> | "
+     "<a href='https://github.com/fusupo' target='_blank'>Github</a>"
+     "</p>"
+     "</footer>"))
+
+  (defun xtof/org-export-postamble (info)
+    (cond ((string= (car (plist-get info :title)) "index")
+           (concat  "<div>"
+                    (xtof/org-export-footer)                    
+                    (xtof/org-export-google-analytics-widget)
+                    "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js'></script>"
+                    "<script type='text/javascript' src='js/main.js'></script>" 
+                    "</div>"))
+          ((string= (car (plist-get info :title)) "about")
+           (concat  "<div>"
+                    (xtof/org-export-footer)                    
+                    (xtof/org-export-google-analytics-widget)
+                    "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js'></script>"
+                    "<script type='text/javascript' src='js/main.js'></script>"
+                    "</div>"))
+          (t (concat  "<div>"
+                      (xtof/org-export-disqus-wiget) 
+                      (xtof/org-export-footer)                    
+                      (xtof/org-export-google-analytics-widget)
+                      "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js'></script>"
+                      "<script type='text/javascript' src='../js/main.js'></script>"
+                      "</div>")))
+    )
+
+  (defun xtof/org-export-html-head-extra (info)
+    (concat
+     "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>"
+     "<link rel='stylesheet' href='style/main.css>")
+    )
+
   (setq org-publish-project-alist
-        '(("fusupo.github.io/index.html"
+        '(("fusupo.github.io-index"
            :base-directory "~/Dropbox/fusupo.github.io/src/"
            :publishing-directory "~/Dropbox/fusupo.github.io/"
            :publishing-function org-html-publish-to-html
            ;;:exclude "*"
-           :html-head-include-default-style nil)
-          ("fusupo.github.io/posts/"
+           :html-head-include-default-style nil
+           :html-head-include-scripts nil
+           ;;:html-head "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+           :html-head-extra "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'><link rel='stylesheet' href='style/main.css'/>"
+           :html-preamble xtof/org-export-preamble
+           :html-postamble xtof/org-export-postamble
+           :with-toc nil
+           :with-title nil
+           :section-numbers nil 
+           )
+          ("fusupo.github.io-posts"
            :base-directory "~/Dropbox/fusupo.github.io/src/posts/"
            :publishing-directory "~/Dropbox/fusupo.github.io/posts/"
            :publishing-function org-html-publish-to-html
            :html-head-include-default-style nil
-           :html-preamble "<div>THIS SHIT IS DEFINED IN MY INIT.EL</div>")
-          ("fusupo.github.io" :components ("fusupo.github.io/index.html" "fusupo.github.io/posts/"))))
+           :html-head-include-scripts nil
+           ;; :html-head "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+           :html-head-extra "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'><link rel='stylesheet' href='../style/main.css'/>"
+           :html-preamble xtof/org-export-preamble
+           :html-postamble xtof/org-export-postamble
+           :with-toc nil
+           :section-numbers nil
+           )
+          ("fusupo.github.io" :components ("fusupo.github.io-index" "fusupo.github.io-posts")))
+        )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -402,16 +533,16 @@ layers configuration. You are free to put any user code."
 ;;  '(org-habit-ready-face ((t (:background "#B8BB26"))))
 ;;  '(org-habit-ready-future-face ((t (:background "#427B58"))))
 ;;  '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (twilight-bright))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-enabled-themes (quote (twilight-bright))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+   '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
