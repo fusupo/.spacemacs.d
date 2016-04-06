@@ -288,7 +288,7 @@ layers configuration. You are free to put any user code."
   (setq magit-push-always-verify nil)
   (setq dotspacemacs-remap-Y-to-y$ nil)
   (global-company-mode)
-  ;;(setq split-width-threshold 100)
+  (setq split-width-threshold 100)
   (setq-default evil-escape-key-sequence "jk")
   (setq markdown-command "pandoc -f markdown_github")
   ;;(global-company-mode t)
