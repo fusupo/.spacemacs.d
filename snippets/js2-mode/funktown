@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# contributor: fusupo
+# name: funktown
+# --
+count_of_$1 = get_total("$1");

@@ -222,7 +222,6 @@ layers configuration. You are free to put any user code."
   (add-hook 'js2-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'emacs-lisp-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
   (add-hook 'clojure-mode-hook 'spacemacs/toggle-automatic-symbol-highlight-on)
-
   (indent-guide-global-mode)
   ;;(global-centered-cursor-mode)
   (global-aggressive-indent-mode)
@@ -293,6 +292,7 @@ layers configuration. You are free to put any user code."
   (setq markdown-command "pandoc -f markdown_github")
   ;;(global-company-mode t)
   (setq org-archive-location "~/Dropbox/org/archive/%s_archive::")
+  (setq aya-persist-snippets-dir "~/.spacemacs.d/snippets/")
   ;; (setq paradox-github-token t)
   ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; ;; ;; use web-mode for .jsx files

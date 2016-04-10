@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# contributor: fusupo
+# name: football
+# --
+  count_of_$1 = get_total("$1");
