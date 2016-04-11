@@ -248,6 +248,7 @@ layers configuration. You are free to put any user code."
       (turn-on-fci-mode)))
   (neotree-show)
 
+  (setq js-indent-level 2) ;; indendet JSON 2 spaces
   (add-hook 'js2-mode-hook (lambda ()
                              (smartparens-strict-mode t)
                              (show-smartparens-mode t)) t)
