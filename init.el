@@ -228,24 +228,6 @@ layers configuration. You are free to put any user code."
   ;;(global-centered-cursor-mode)
   (global-aggressive-indent-mode)
   (fringe-mode -1)
-  (defun sanityinc/fci-enabled-p () (symbol-value 'fci-mode))
-  (defvar sanityinc/fci-mode-suppressed nil)
-  (make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
-  (defadvice popup-create (before suppress-fci-mode activate)
-    (make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
-    "Suspend fci-mode while popups are visible"
-    (let ((fci-enabled (sanityinc/fci-enabled-p)))
-      (when fci-enabled
-        (setq sanityinc/fci-mode-suppressed fci-enabled)
-        (indent-guide-mode -1)
-        (turn-off-fci-mode))))
-  (defadvice popup-delete (after restore-fci-mode activate)
-    "Restore fci-mode when all popups have closed"
-    (when (and sanityinc/fci-mode-suppressed
-               (null popup-instances))
-      (setq sanityinc/fci-mode-suppressed nil)
-      (indent-guide-mode 1)
-      (turn-on-fci-mode)))
   (neotree-show)
 
   (setq js-indent-level 2) ;; indendet JSON 2 spaces
