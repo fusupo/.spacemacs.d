@@ -27,32 +27,33 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t)
      (clojure :variables clojure-enable-fancify-symbols t)
-     emacs-lisp
-     ;;finance
-     ;;gnus
-     html
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
-     javascript
-     git
-     github
-     markdown
-     org
-     react
-     ;;restclient
-     ;;prodigy
      (shell :variables
             shell-default-shell 'eshell
             shell-enable-smart-eshell t
             shell-default-height 10
             shell-default-position 'bottom
             shell-default-term-shell "/bin/zsh" )
+     deft
+     emacs-lisp
+     git
+     github
+     html
+     javascript
+     markdown
+     org
+     react
      spell-checking
      syntax-checking
-     themes-megapack
+     themes-megapack 
      ;;;;;;;;;;;;;;;;;;;;;;;;;  XTOF CUSTOMIZATION
      xtof-org
      xtof-fci
      xtof-web
+     ;;restclient
+     ;;prodigy
+     ;;finance
+     ;;gnus
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
