@@ -215,7 +215,8 @@ user code."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-
+  (setq deft-directory "~/Dropbox/org")
+  (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
   ;; linum-mode
   (add-hook 'js2-mode-hook 'linum-mode)
   (add-hook 'emacs-lisp-mode-hook 'linum-mode)
