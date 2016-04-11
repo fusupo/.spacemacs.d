@@ -34,7 +34,14 @@
       (add-hook 'js2-mode-hook 'skewer-mode)
       (add-hook 'css-mode-hook 'skewer-css-mode)
       (add-hook 'html-mode-hook 'skewer-html-mode)
-      (httpd-start))
+      (httpd-start)
+      (setq js2-highlight-level 3)
+      (setq js2-indent-switch-body t)
+      (setq js2-basic-offset 2)
+      ;;(setq js2-mode-indent-inhibit-undo nil)
+      ;; (add-hook 'js2-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+      (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
+      )
     :config
     (progn
       (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ss" 'run-skewer)

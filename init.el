@@ -248,38 +248,10 @@ layers configuration. You are free to put any user code."
       (turn-on-fci-mode)))
   (neotree-show)
 
-  ;; (use-package js2-mode
-  ;;   :ensure js2-mode
-  ;;   :mode
-  ;;   (("\\.js\\'" . js2-mode)
-  ;;    ("\\.json\\'" . js2-mode))
-  ;;   ;;:interpreter ("node" . js2mode)
-  ;;   :config
-
-  (progn
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;  https://github.com/jakubholynet/dotfiles/blob/dotf/.live-packs/jholy-pack/lib/nodejs-repl-eval.el
-    ;;  via https://atlanis.net/blog/posts/nodejs-repl-eval.html
-    ;; (use-package nodejs-repl-eval
-    ;;   :config (progn
-    ;;             (add-hook 'js2-mode-hook '(lambda () (local-set-key "\C-x\C-e" 'nodejs-repl-eval-dwim)))))
-    ;; (use-package js2-refactor
-    ;;   :ensure t
-    ;;   :config (progn
-    ;;             (js2r-add-keybindings-with-prefix "C-c C-m")))
-    (setq js-indent-level 2)
-    (setq js2-highlight-level 3)
-    (setq js2-indent-switch-body t)
-    ;;(setq js2-mode-indent-inhibit-undo nil)
-    ;; (add-hook 'js2-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
-    (add-hook 'js2-mode-hook (lambda ()
-                               (smartparens-strict-mode t)
-                               (show-smartparens-mode t)
-                               (setq js2-basic-offset 2)
-                               (js2-mode-hide-warnings-and-errors)) t)
-    ;; (yas-reload-all)
-    (add-hook 'js2-mode-hook #'yas-minor-mode))
-  ;;)
+  (add-hook 'js2-mode-hook (lambda ()
+                             (smartparens-strict-mode t)
+                             (show-smartparens-mode t)) t)
+  ;;  (add-hook 'js2-mode-hook #'yas-minor-mode)
 
   (add-hook 'org-mode-hook 'spacemacs/toggle-spelling-checking-on)
   (add-hook 'js2-mode-hook 'spacemacs/toggle-spelling-checking-off)
@@ -288,64 +260,15 @@ layers configuration. You are free to put any user code."
 
   (setq magit-push-always-verify nil)
   (setq dotspacemacs-remap-Y-to-y$ nil)
-  (global-company-mode)
   (setq split-width-threshold 100)
   (setq-default evil-escape-key-sequence "jk")
   (setq markdown-command "pandoc -f markdown_github")
-  ;;(global-company-mode t)
+  (global-company-mode t)
+  ;;(global-company-mode)
   (setq org-archive-location "~/Dropbox/org/archive/%s_archive::")
   (setq aya-persist-snippets-dir "~/.spacemacs.d/snippets/")
   ;; (setq paradox-github-token t)
-  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; ;; ;; use web-mode for .jsx files
-  ;; (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-  ;; ;; http://www.flycheck.org/manual/latest/index.html
-  ;; (require 'flycheck)
-
-  ;; ;; turn on flychecking globally
-  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
-
-  ;; ;; disable jshint since we prefer eslint checking
-  ;; (setq-default flycheck-disabled-checkers
-  ;;               (append flycheck-disabled-checkers
-  ;;                       '(javascript-jshint)))
-
-  ;; ;; use eslint with web-mode for jsx files
-  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
-
-  ;; ;; customize flycheck temp file prefix
-  ;; (setq-default flycheck-temp-prefix ".flycheck")
-
-  ;; ;; disable json-jsonlist checking for json files
-  ;; (setq-default flycheck-disabled-checkers
-  ;;               (append flycheck-disabled-checkers
-  ;;                       '(json-jsonlist)))
-
-  ;; ;; https://github.com/purcell/exec-path-from-shell
-  ;; ;; only need exec-path-from-shell on OSX
-  ;; ;; this hopefully sets up path and other vars better
-  ;; (when (memq window-system '(mac ns))
-  ;;   (exec-path-from-shell-initialize))
-
-  ;; ;; ;; adjust indents for web-mode to 2 spaces
-  ;; ;; (defun my-web-mode-hook ()
-
-  ;; ;;   "Hooks for Web mode. Adjust indents"
-  ;; ;; ;;; http://web-mode.org/
-  ;; ;;   (setq web-mode-markup-indent-offset 2)
-  ;; ;;   (setq web-mode-css-indent-offset 2)
-  ;; ;;   (setq web-mode-code-indent-offset 2))
-  ;; ;; (add-hook 'web-mode-hook  'my-web-mode-hook)
-
-  ;; ;; ;; for better jsx syntax-highlighting in web-mode
-  ;; ;; ;; - courtesy of Patrick @halbtuerke
-  ;; ;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
-  ;; ;;   (if (equal web-mode-content-type "jsx")
-  ;; ;;       (let ((web-mode-enable-part-face nil))
-  ;; ;;         ad-do-it)
-  ;; ;
-  ;;     ad-do-it))
   (defun xtof/org-export-header ()
     (concat
      "<header id='header'>"
@@ -540,16 +463,17 @@ layers configuration. You are free to put any user code."
 ;;  '(org-habit-ready-face ((t (:background "#B8BB26"))))
 ;;  '(org-habit-ready-future-face ((t (:background "#427B58"))))
 ;;  '(region ((t (:background "#300000" :distant-foreground "#FDF4C1")))))
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(custom-enabled-themes (quote (twilight-bright))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
-   '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (twilight-bright))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ;; '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ ;; '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ )
