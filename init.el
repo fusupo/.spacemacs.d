@@ -26,12 +26,12 @@ values."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t)
-     clojure
+     (clojure :variables clojure-enable-fancify-symbols t)
      emacs-lisp
      ;;finance
      ;;gnus
      html
-     ibuffer
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      javascript
      git
      github
