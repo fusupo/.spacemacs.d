@@ -52,7 +52,7 @@ values."
      xtof-web
      ;;restclient
      ;;prodigy
-     ;;finance
+     finance
      gnus
      )
    ;; List of additional packages that will be installed without being
