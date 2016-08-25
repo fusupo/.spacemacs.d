@@ -17,6 +17,7 @@
         ;; package names go here
         org
         org-ac
+        org-gcal
         neotree
         ))
 
@@ -33,6 +34,18 @@
     :init (progn
             (print "loade org ac")
             (org-ac/config-default))))
+
+(defun xtof-org/init-org-gcal ()
+  "Initialize my package"
+  (use-package org-gcal
+    :ensure t
+    :defer t
+    :init (progn
+            (setq org-gcal-client-id "48123994321-7klbgee36rhkn3ampe5muc3b27ajc6nu.apps.googleusercontent.com"
+                  org-gcal-client-secret "aAFC94Vp3kVdhi2O6AOK13pf"
+                  org-gcal-file-alist '(("fusupo@gmail.com" .  "~/Dropbox/org/schedule.org")))
+            )))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
@@ -842,7 +855,7 @@
                        ;; use a depth level of 6 max
                        (setq org-refile-targets
                              '((org-agenda-files . (:maxlevel . 4))))
-                       (setq org-outline-path-complete-in-steps nil)
+                       ;;(setq org-outline-path-complete-in-steps nil)
                        ;; (setq org-agenda-files
                        ;;       '("~/Dropbox/org/inbox.org"
                        ;;         "~/Dropbox/org/activity_log.org"
