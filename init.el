@@ -53,13 +53,13 @@ values."
      ;;restclient
      ;;prodigy
      ;;finance
-     ;;gnus
+     gnus
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(calfw)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -89,7 +89,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner '~/.spacemacs.d/512-banner.txt'
+   dotspacemacs-startup-banner "~/.spacemacs.d/512-banner.txt"
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -255,6 +255,55 @@ layers configuration. You are free to put any user code."
   (setq aya-persist-snippets-dir "~/.spacemacs.d/snippets/")
   ;; (setq paradox-github-token t)
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  (require 'calfw)
+  (require 'calfw-org)
+  (require 'org-gcal)
+
+  (setq cfw:fchar-junction ?╬
+        cfw:fchar-vertical-line ?║
+        cfw:fchar-horizontal-line ?═
+        cfw:fchar-left-junction ?╠
+        cfw:fchar-right-junction ?╣
+        cfw:fchar-top-junction ?╦
+        cfw:fchar-top-left-corner ?╔
+        cfw:fchar-top-right-corner ?╗)
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;Get email, and store in nnml
+  (setq gnus-secondary-select-methods
+        '(
+          (nnimap "gmail"
+                  (nnimap-address
+                   "imap.gmail.com")
+                  (nnimap-server-port 993)
+                  (nnimap-stream ssl))
+          ))
+
+  ;; Send email via Gmail:
+  (setq message-send-mail-function 'smtpmail-send-it
+        smtpmail-default-smtp-server "smtp.gmail.com")
+
+  ;; Archive outgoing email in Sent folder on imap.gmail.com:
+  (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
+        gnus-message-archive-group "[Gmail]/Sent Mail")
+
+  ;; set return email address based on incoming email address
+  (setq gnus-posting-styles
+        '(((header "to" "address@outlook.com")
+           (address "address@outlook.com"))
+          ((header "to" "address@gmail.com")
+           (address "address@gmail.com"))))
+
+  ;; store email in ~/gmail directory
+  (setq nnml-directory "~/gmail")
+  (setq message-directory "~/gmail")
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (defun xtof/org-export-header ()
     (concat
      "<header id='header'>"
@@ -455,11 +504,30 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (twilight-bright)))
- '(httpd-port 2173))
+ '(httpd-port 2173)
+ '(mm-text-html-renderer (quote gnus-w3m)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cfw:face-annotation ((t :foreground "RosyBrown" :inherit cfw:face-day-title)))
+ '(cfw:face-day-title ((t :background "grey10")))
+ '(cfw:face-default-content ((t :foreground "#bfebbf")))
+ '(cfw:face-default-day ((t :weight bold :inherit cfw:face-day-title)))
+ '(cfw:face-disable ((t :foreground "DarkGray" :inherit cfw:face-day-title)))
+ '(cfw:face-grid ((t :foreground "DarkGrey")))
+ '(cfw:face-header ((t (:foreground "#d0bf8f" :weight bold))))
+ '(cfw:face-holiday ((t :background "grey10" :foreground "#8c5353" :weight bold)))
+ '(cfw:face-periods ((t :foreground "cyan")))
+ '(cfw:face-saturday ((t :foreground "#8cd0d3" :background "grey10" :weight bold)))
+ '(cfw:face-select ((t :background "#2f2f2f")))
+ '(cfw:face-sunday ((t :foreground "#cc9393" :background "grey10" :weight bold)))
+ '(cfw:face-title ((t (:foreground "#f0dfaf" :weight bold :height 2.0 :inherit variable-pitch))))
+ '(cfw:face-today ((t :background: "grey10" :weight bold)))
+ '(cfw:face-today-title ((t :background "#7f9f7f" :weight bold)))
+ '(cfw:face-toolbar ((t :foreground "red" :background "red")))
+ '(cfw:face-toolbar-button-off ((t :foreground "Gray10" :weight bold)))
+ '(cfw:face-toolbar-button-on ((t :foreground "Gray50" :weight bold)))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
